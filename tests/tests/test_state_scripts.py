@@ -708,6 +708,117 @@ REBOOT_TEST_SET = [
             "ArtifactReboot_Leave_89"
         ],
     },
+    {
+        "RebootScripts": ["ArtifactReboot_Leave_01"],
+
+        "ScriptOrder": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01",
+            "ArtifactReboot_Leave_89",
+            "ArtifactFailure_Enter_89",
+            "ArtifactFailure_Enter_99",
+            "ArtifactFailure_Leave_09",
+            "ArtifactFailure_Leave_99",
+        ],
+
+        "ExpectedScriptFlow": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01", # powerloss
+            "ArtifactFailure_Enter_89", # run failure scripts on the committed partition
+            "ArtifactFailure_Enter_99",
+            "ArtifactFailure_Leave_09",
+            "ArtifactFailure_Leave_99",
+        ],
+    },
+    {
+        "RebootScripts": ["ArtifactCommit_Enter_99"],
+
+        "ScriptOrder": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01",
+            "ArtifactReboot_Leave_89",
+            "ArtifactCommit_Enter_89",
+            "ArtifactCommit_Enter_99", # powerloss
+            "ArtifactFailure_Enter_89", # run failure scripts on the committed partition
+            "ArtifactFailure_Enter_99",
+            "ArtifactFailure_Leave_09",
+            "ArtifactFailure_Leave_99",
+        ],
+
+        "ExpectedScriptFlow": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01",
+            "ArtifactCommit_Enter_89",
+            "ArtifactCommit_Enter_99",
+            "ArtifactFailure_Enter_89",
+            "ArtifactFailure_Enter_99",
+            "ArtifactFailure_Leave_09",
+            "ArtifactFailure_Leave_99",
+        ],
+    },
+{
+        "RebootScripts": ["ArtifactCommit_Leave_01"],
+
+        "ScriptOrder": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01",
+            "ArtifactReboot_Leave_89",
+            "ArtifactCommit_Enter_89",
+            "ArtifactCommit_Enter_99",
+            "ArtifactCommit_Leave_00",
+            "ArtifactCommit_Leave_01",
+        ],
+
+        "ExpectedScriptFlow": [
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_01",
+            "ArtifactInstall_Enter_02",
+            "ArtifactInstall_Leave_01",
+            "ArtifactInstall_Leave_03",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Enter_01",
+            "ArtifactReboot_Enter_11",
+            "ArtifactReboot_Leave_01",
+            "ArtifactCommit_Enter_89",
+            "ArtifactCommit_Enter_99",
+            "ArtifactCommit_Leave_00",
+            "ArtifactCommit_Leave_01", # powerloss
+            "ArtifactCommit_Leave_00", # rerun
+            "ArtifactCommit_Leave_01", # rerun
+        ],
+    },
 ]
 
 
