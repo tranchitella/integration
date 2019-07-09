@@ -119,7 +119,7 @@ def pytest_configure(config):
     env.banner_timeout = 10
 
     version = subprocess.check_output(["../extra/release_tool.py", "--version-of", "integration"])
-    if re.search("(^|/)[0-9]+\.[0-9]+\.[x0-9]+", version):
+    if True or re.search("(^|/)[0-9]+\.[0-9]+\.[x0-9]+", version):
         # Don't run tenant tests for release branches.
         global run_tenant_tests
         run_tenant_tests = False
