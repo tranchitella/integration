@@ -1,0 +1,23 @@
+version: '2.1'
+services:
+
+    #
+    # cfengine-hub
+    #
+    cfengine-hub:
+        image: mendersoftware/cfengine-hub:latest
+        extends:
+            file: common.yml
+            service: mender-base
+        networks:
+            - mender
+        ports:
+            - "5308:5308"
+            - "9080:80"
+            - "9443:443"
+    #
+    # mender-api-gateway
+    #
+    mender-api-gateway:
+        volumes:
+            - ./cfengine/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf

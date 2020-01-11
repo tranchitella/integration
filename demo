@@ -108,6 +108,7 @@ if [[ "$RUN_UP" == "" ]]; then
     exec docker-compose \
          -f docker-compose.yml \
          -f docker-compose.storage.minio.yml \
+         -f docker-compose.cfengine.yml \
          -f docker-compose.demo.yml \
          -p ${DOCKER_COMPOSE_PROJECT_NAME} \
          $CLIENT \
@@ -144,6 +145,7 @@ docker-compose \
     -f docker-compose.yml \
     -f docker-compose.storage.minio.yml \
     -f docker-compose.demo.yml \
+    -f docker-compose.cfengine.yml \
     -p ${DOCKER_COMPOSE_PROJECT_NAME} \
     $CLIENT \
     "$@" -d
